@@ -1,0 +1,3 @@
+# Project exclude paths
+/by.pvt.api/target/
+/by.pvt.core/target/
