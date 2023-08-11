@@ -21,6 +21,7 @@ public class UserServlet extends HttpServlet {
         resp.setContentType("text/html");
         UserRepository userRepository= ApplicationContext.getInstance().getUserRepository();
         pw.println(userRepository.update().size());
+        pw.println(userRepository.showAllUsers());
         pw.close();
     }
 
@@ -30,14 +31,15 @@ public class UserServlet extends HttpServlet {
         Enumeration<String> param = req.getParameterNames();
         PrintWriter printWriter = resp.getWriter();
         User user=ApplicationContext.getInstance().getUserService().createUser(userRepository.update().size()+1,
-                req.getParameter("Login"),req.getParameter("Password"),
-                req.getParameter("Name"),req.getParameter("Surname"));
+                req.getParameter("Name"),req.getParameter("Surname"),
+                req.getParameter("Password"),req.getParameter("Login"));
         userRepository.addUser(user);
         userRepository.saveUser();
         while (param.hasMoreElements()) {
             String pname = param.nextElement();
             printWriter.print("param name: " + pname);
-            printWriter.println("value: " + req.getParameter(pname));
+            printWriter.println(" value: " + req.getParameter(pname));
+
         }
         userRepository.showAllUsers();
         printWriter.close();

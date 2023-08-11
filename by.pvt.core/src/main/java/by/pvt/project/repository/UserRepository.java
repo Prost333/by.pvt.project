@@ -34,6 +34,7 @@ public class UserRepository extends FileWorker implements UserService {
 
 
     public List<User> showAllUsers() {
+        userList= (List<User>) deserializeObject(way);
         System.out.println(deserializeObject(way));
         return userList;
     }
@@ -56,6 +57,11 @@ public class UserRepository extends FileWorker implements UserService {
     @Override
     public User createUser(int id, String login, String password, String name, String surname) {
         return new User(id,login,password,name,surname, Role.CLIENT);
+    }
+
+    @Override
+    public User cheakPassword(String login, String password) {
+        return null;
     }
 
     public User findUserforLogin(String login) {

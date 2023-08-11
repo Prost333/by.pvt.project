@@ -9,9 +9,18 @@
         <servlet-name>UserServlet</servlet-name>
         <servlet-class>by.pvt.project.servlets.UserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserRegistration</servlet-name>
+        <servlet-class>by.pvt.project.servlets.UserRegistration</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserRegistration</servlet-name>
+        <url-pattern>/reg</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/user</url-pattern>
     </servlet-mapping>
+
 
 </web-app>
