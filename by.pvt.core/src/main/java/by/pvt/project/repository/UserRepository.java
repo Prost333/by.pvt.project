@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class UserRepository extends FileWorker implements UserService {
+public class UserRepository extends FileWorker  {
     public static List<User> userList = new ArrayList<>();
     public static String way = "C:\\Project Java\\by.pvt.project\\by.pvt.core\\src\\main\\java\\by\\pvt\\project\\data\\Users.txt";
 
@@ -22,6 +22,7 @@ public class UserRepository extends FileWorker implements UserService {
         userList = update();
         userList.add(user);
         serializeObject(userList, way);
+        saveUser();
         return user;
     }
 
@@ -39,45 +40,7 @@ public class UserRepository extends FileWorker implements UserService {
         return userList;
     }
 
-    public User findUserforID(int id) {
-        List<User> users = update();
-        Optional<User> users2 = userList.stream().filter(user -> user.getId() == id).findFirst();
-        try {
-            if (users2.isEmpty()) {
-                System.out.println("Такого id не существует");
-            } else {
-                System.out.println(users2.get());
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return users2.get();
-    }
 
-    @Override
-    public User createUser(int id, String login, String password, String name, String surname) {
-        return new User(id,login,password,name,surname, Role.CLIENT);
-    }
-
-    @Override
-    public User cheakPassword(String login, String password) {
-        return null;
-    }
-
-    public User findUserforLogin(String login) {
-        List<User> users = update();
-        Optional<User> users2 = userList.stream().filter(user -> user.getLogin() == login).findFirst();
-        try {
-            if (users2.isEmpty()) {
-                System.out.println("Такого Логина не существует");
-            } else {
-                System.out.println(users2.get());
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return users2.get();
-    }
 
 
     public void saveUser() {

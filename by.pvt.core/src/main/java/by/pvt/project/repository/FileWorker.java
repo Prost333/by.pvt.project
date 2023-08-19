@@ -7,9 +7,9 @@ public class FileWorker {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file))) {
             objectOutputStream.writeObject(object);
         } catch (FileNotFoundException e) {
-//            e.printStackTrace();
+            e.printStackTrace();
         } catch (IOException e) {
-//            e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
@@ -19,7 +19,7 @@ public class FileWorker {
             objectInputStream.close();
             return list;
         } catch (Exception e) {
-//            e.printStackTrace();
+            e.printStackTrace();
             return new Object();
         }
     }

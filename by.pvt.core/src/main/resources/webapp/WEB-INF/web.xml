@@ -9,6 +9,10 @@
         <servlet-name>UserServlet</servlet-name>
         <servlet-class>by.pvt.project.servlets.UserServlet</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/user</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>UserRegistration</servlet-name>
         <servlet-class>by.pvt.project.servlets.UserRegistration</servlet-class>
@@ -17,10 +21,22 @@
         <servlet-name>UserRegistration</servlet-name>
         <url-pattern>/reg</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>GoodRegistration</servlet-name>
+        <servlet-class>by.pvt.project.servlets.GoodRegistrationServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>UserServlet</servlet-name>
-        <url-pattern>/user</url-pattern>
+        <servlet-name>GoodRegistration</servlet-name>
+        <url-pattern>/goodreg</url-pattern>
     </servlet-mapping>
 
+<!--<filter>-->
+<!--    <filter-name>authenfication</filter-name>-->
+<!--    <filter-class>by.pvt.project.filter.Autification</filter-class>-->
+<!--</filter>-->
+<!--    <filter-mapping>-->
+<!--        <filter-name>authenfication</filter-name>-->
+<!--        <url-pattern>/goodreg</url-pattern>-->
+<!--    </filter-mapping>-->
 
 </web-app>

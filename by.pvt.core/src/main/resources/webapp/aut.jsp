@@ -22,12 +22,6 @@
     <input type=submit value="Sign Up">
 </form>
 
-<p>Another form for get request</p>
 
-<form name="Form"
-      method="get"
-      action="http://localhost:8080/reg">
-    <input type=submit value="Servlet info">
-</form>
 </body>
 </html>
