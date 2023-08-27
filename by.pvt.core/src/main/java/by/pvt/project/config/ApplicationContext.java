@@ -5,12 +5,15 @@ import by.pvt.project.mapping.GoodMapping;
 import by.pvt.project.mapping.UserMapping;
 import by.pvt.project.repository.BasketRepository;
 import by.pvt.project.repository.GoodRepository;
+import by.pvt.project.repository.OrderRepository;
 import by.pvt.project.repository.UserRepository;
 import by.pvt.project.service.BasketService;
 import by.pvt.project.service.GoodService;
+import by.pvt.project.service.OrderService;
 import by.pvt.project.service.UserService;
 import by.pvt.project.service.imp.BasketServerImp;
 import by.pvt.project.service.imp.GoodServiceImp;
+import by.pvt.project.service.imp.OrderServerImp;
 import by.pvt.project.service.imp.UserServerImp;
 
 public class ApplicationContext {
@@ -22,8 +25,10 @@ public class ApplicationContext {
     private final UserService userService;
     private  final GoodService goodService;
     private  final BasketService basketService;
-    private   BasketMapping basketMapping;
-    private   BasketRepository basketRepository;
+    private  final BasketMapping basketMapping;
+    private final  BasketRepository basketRepository;
+    private final OrderRepository orderRepository;
+    private final OrderService orderService;
 
 
     private ApplicationContext( ) {
@@ -33,9 +38,11 @@ public class ApplicationContext {
         this.userMapping = new UserMapping();
         this.userService =  new UserServerImp(userRepository,userMapping);
         this.goodService = new GoodServiceImp(goodMapping,goodRepository);
-        this.basketService = new BasketServerImp(basketRepository, basketMapping);
-        this.basketMapping = new BasketMapping();
         this.basketRepository = new BasketRepository();
+        this.basketMapping = new BasketMapping();
+        this.basketService = new BasketServerImp(basketRepository, basketMapping);
+        this.orderRepository=new OrderRepository();
+        this.orderService=new OrderServerImp(orderRepository);
     }
     public static ApplicationContext getInstance(){
         if (applicationContext==null){
@@ -84,15 +91,17 @@ public class ApplicationContext {
         return basketMapping;
     }
 
-    public void setBasketMapping(BasketMapping basketMapping) {
-        this.basketMapping = basketMapping;
-    }
-
     public BasketRepository getBasketRepository() {
         return basketRepository;
     }
 
-    public void setBasketRepository(BasketRepository basketRepository) {
-        this.basketRepository = basketRepository;
+
+    public OrderRepository getOrderRepository() {
+        return orderRepository;
     }
+
+    public OrderService getOrderService() {
+        return orderService;
+    }
+
 }

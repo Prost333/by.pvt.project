@@ -13,5 +13,75 @@
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/user</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>UserRegistration</servlet-name>
+        <servlet-class>by.pvt.project.servlets.UserRegistration</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserRegistration</servlet-name>
+        <url-pattern>/reg</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GoodRegistration</servlet-name>
+        <servlet-class>by.pvt.project.servlets.GoodRegistrationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GoodRegistration</servlet-name>
+        <url-pattern>/goodreg</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>admin</servlet-name>
+        <jsp-file>/goodRegistration.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>admin</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <servlet>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>by.pvt.project.servlets.AdminServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>AdminServlet</servlet-name>
+<url-pattern>/adminS</url-pattern>
+</servlet-mapping>
+    <servlet>
+        <servlet-name>basket</servlet-name>
+        <jsp-file>/basket.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>basket</servlet-name>
+        <url-pattern>/basket</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>BasketServlet</servlet-name>
+        <servlet-class>by.pvt.project.servlets.BasketServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BasketServlet</servlet-name>
+        <url-pattern>/basketServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>completionBasket</servlet-name>
+        <jsp-file>/completionBasket.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>completionBasket</servlet-name>
+        <url-pattern>/completionBasket</url-pattern>
+    </servlet-mapping>
 
-</web-app>
+
+<filter>
+<filter-name>authenfication</filter-name>
+<filter-class>by.pvt.project.filter.Authentication</filter-class>
+</filter>
+<filter-mapping>
+<filter-name>authenfication</filter-name>
+<url-pattern>/goodRegistration.jsp</url-pattern>
+</filter-mapping>
+<filter-mapping>
+<filter-name>authenfication</filter-name>
+<url-pattern>/AdminServlet.jsp</url-pattern>
+</filter-mapping>
+
+        </web-app>
