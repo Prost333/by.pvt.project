@@ -15,6 +15,7 @@ public interface UserService {
  User findUserByID(int id);
  User createUser (int id, String login, String password, String name, String surname);
  User cheakPassword(String login, String password);
+ List <User> userlist();
 
 }
 

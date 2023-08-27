@@ -60,13 +60,11 @@ public class Good implements Serializable {
 
     @Override
     public String toString() {
-        return "Good{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
-                ", type='" + type + '\'' +
-                ", price=" + price +
-                ", code=" + code +
-                '}';
+        return " id= " + id +
+                " имя='" + name + '\'' +
+                ", тип='" + type + '\'' +
+                ", цена=" + price +
+                ", код=" + code ;
     }
 
     @Override

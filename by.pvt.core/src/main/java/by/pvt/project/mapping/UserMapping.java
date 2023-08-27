@@ -16,8 +16,10 @@ public class UserMapping {
     }
 
     public User requestUser(UserRequest userRequest) {
-        UserRepository userRepository = new UserRepository();
-        return  userServerImp.findUserByLogin(userRequest.getLogin());
+        UserRepository userRepository=new UserRepository();
+        User user=userRepository.update().stream().filter(user1 -> user1.getPassword().
+                equals(userRequest.getPassword())).findFirst().orElseThrow();
+        return  user;
     }
 }
 

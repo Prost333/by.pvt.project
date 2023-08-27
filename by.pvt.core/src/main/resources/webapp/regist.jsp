@@ -3,6 +3,10 @@
 
 
 <body>
+<c:out value ="${user.name}"/>
+
+<br>
+<br>
 <form name="Form"
       method="post"
       action="http://localhost:8080/user">
@@ -31,11 +35,15 @@
     <input type=submit value="Submit">
 </form>
 
-<p>Another form for get request</p>
+   <form name="Form"
+          method="post"
+          action="http://localhost:8080/aut.jsp">
 
-<form name="Form"
-      method="get"
-      action="http://localhost:8080/user">
-    <input type=submit value="Servlet info">
-</form>
+    <input type=submit value="aut">
+    <br>
+    <br>
+    <br>
+    </form>
+
+
 </body>

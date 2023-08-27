@@ -1,6 +1,7 @@
 package by.pvt.project.service.imp;
 
 import by.pvt.project.domain.Good;
+import by.pvt.project.domain.User;
 import by.pvt.project.mapping.GoodMapping;
 import by.pvt.project.repository.GoodRepository;
 import by.pvt.project.service.GoodService;
@@ -88,7 +89,7 @@ public class GoodServiceImp implements GoodService {
 
     @Override
     public List<Good> goodList() {
-        return goodRepository.showAllGood();
+        return goodRepository.allGood();
     }
 
     @Override
@@ -96,12 +97,28 @@ public class GoodServiceImp implements GoodService {
         return goodRepository.update().size();
     }
 
+    @Override
+    public Good findGood(int id) {
+        List<Good> users = goodRepository.update();
+        Optional<Good> users2 = users.stream().filter(good -> good.getId() == id).findFirst();
+        try {
+            if (users2.isEmpty()) {
+                throw  new RuntimeException();
+            } else {
+                System.out.println(users2.get());
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return users2.get();
+    }
+
     public Good findIDGood(int id) {
         List<Good> users = goodRepository.update();
         Optional<Good> good1 = users.stream().filter(good -> good.getId() == id).findFirst();
         try {
             if (good1.isEmpty()) {
-                System.out.println("Такого id не существует");
+                throw  new RuntimeException();
             } else {
                 System.out.println(good1.get());
             }

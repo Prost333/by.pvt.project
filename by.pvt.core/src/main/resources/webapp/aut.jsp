@@ -3,6 +3,7 @@
 
 <html>
 <body>
+
 <form name="Form"
       method="post"
       action="http://localhost:8080/reg">

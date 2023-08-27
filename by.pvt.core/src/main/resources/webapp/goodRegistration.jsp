@@ -6,6 +6,10 @@
 
 <html>
 <body>
+
+
+
+
 <form name="Form"
       method="post"
       action="http://localhost:8080/goodreg">
@@ -25,6 +29,7 @@
             <td><B>Price</B></td>
             <td><input type=textbox name="price" size="25" value=" "></td>
          </tr>
+
     </tаble>
 <br>
     <input type=submit value="Registration">
@@ -81,6 +86,16 @@ action="http://localhost:8080/goodMenu.jsp">
         </tr>
         <input type=submit value=" change good">
     </table>
+</form>
+<p>Все зарегистрированные пользователи</p>
+<div>
+<c:out value ="${allUsers}"/>
+</div>
+<form name="Form"
+method="post"
+action="http://localhost:8080/goodreg">
+<input type=submit value="List Product">
+</br>
 </form>
 </body>
 </html>

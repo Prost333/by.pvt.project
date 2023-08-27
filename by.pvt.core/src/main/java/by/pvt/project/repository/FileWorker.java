@@ -3,6 +3,7 @@ package by.pvt.project.repository;
 import java.io.*;
 
 public class FileWorker {
+
     public static void serializeObject(Object object, String file) {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file))) {
             objectOutputStream.writeObject(object);
@@ -14,6 +15,7 @@ public class FileWorker {
     }
 
     public static Object deserializeObject(String file) {
+
         try { ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));
             Object list = objectInputStream.readObject();
             objectInputStream.close();

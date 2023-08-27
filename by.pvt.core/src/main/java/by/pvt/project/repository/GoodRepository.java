@@ -26,6 +26,10 @@ public class GoodRepository extends FileWorker {
         goodList.remove(good);
         saveGood();
     }
+    public List<Good> allGood() {
+        goodList= (List<Good>) deserializeObject(way);
+        return goodList;
+    }
 
     public List<Good> showAllGood() {
         goodList= (List<Good>) deserializeObject(way);

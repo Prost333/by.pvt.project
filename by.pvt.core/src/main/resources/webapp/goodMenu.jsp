@@ -5,16 +5,50 @@
 
 <html>
 <body>
-<div>
-<c:out value ="${list}"/>
-</div>
 
-<br>
 <form name="Form"
-method="get"
-action="http://localhost:8080/goodreg">
+method="post"
+action="http://localhost:8080/adminS">
 <input type=submit value="List Product">
 </br>
 </form>
+<div>
+<c:out value ="${Goods}"/>
+</div>
+
+<br>
+<table>
+<c:forEach var="good" items="${Goods}">
+<tr>
+<td>id:${good.id}</td>
+</tr>
+<tr>
+<td>Name:${good.name}</td>
+</tr>
+<tr>
+<td>type:${good.type}</td>
+</tr>
+<tr>
+<td>price:${good.price}</td>
+</tr>
+<tr>
+<td>code:${good.code}</td>
+</tr>
+<tr>
+<td> <form name="Form"
+     method="get"
+     action="http://localhost:8080/adminS">
+     <input type=submit value="buy">
+     <input type="hidden" id=${good.id} name="id" value=${good.id}>
+     </br>
+     </form> </td>
+</tr>
+
+<tr>
+<td>  </td>
+</tr>
+</c:forEach>
+</table>
+
 </html>
 </body>

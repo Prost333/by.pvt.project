@@ -15,4 +15,5 @@ public interface GoodService {
     Good createGood(String name, int id,String type,double price,int code);
     List<Good>goodList();
     int SizeGood();
+    Good findGood (int id);
 }

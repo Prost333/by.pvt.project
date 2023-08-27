@@ -41,7 +41,7 @@ public class UserServerImp implements UserService {
         Optional<User> users2 = users.stream().filter(user -> user.getLogin().equals(login)).findFirst();
         try {
             if (users2.isEmpty()) {
-                System.out.println("Такого Login не существует");
+                throw  new RuntimeException();
             } else {
                 System.out.println(users2.get());
             }
@@ -57,7 +57,7 @@ public class UserServerImp implements UserService {
         Optional<User> users2 = users.stream().filter(user -> user.getId() == id).findFirst();
         try {
             if (users2.isEmpty()) {
-                System.out.println("Такого id не существует");
+                throw  new RuntimeException();
             } else {
                 System.out.println(users2.get());
             }
@@ -78,10 +78,17 @@ public class UserServerImp implements UserService {
 
     public User cheakPassword(String login, String password) {
         List<User> users = userRepository.update();
-        Optional<User> user1 = users.stream().filter(user -> user.getPassword().equals(password)).findFirst();
+        Optional<User> user1 = users.stream().filter(user -> user.getPassword().equals(password)).
+                filter(user -> user.getLogin().equals(login)).findFirst();
 
         return user1.get();
     }
+
+    @Override
+    public List<User> userlist() {
+        return userRepository.update();
+    }
+
     public  int countlist(){
         return userRepository.update().size();
     }
