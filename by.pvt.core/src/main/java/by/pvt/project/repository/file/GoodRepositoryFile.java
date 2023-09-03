@@ -1,57 +1,59 @@
-package by.pvt.project.repository;
+package by.pvt.project.repository.file;
 
 
 
 import by.pvt.project.domain.Good;
+import by.pvt.project.repository.FileWorker;
+import by.pvt.project.repository.serviceRep.GoodRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-public class GoodRepository extends FileWorker {
+public class GoodRepositoryFile extends FileWorker implements GoodRepository {
     public static List<Good> goodList = new ArrayList<>();
     public static String way = "C:\\Project Java\\by.pvt.project\\by.pvt.core\\src\\main\\java\\by\\pvt\\project\\data\\Good.txt";
 
-    public GoodRepository() {
+    public GoodRepositoryFile() {
     }
-    public Good addGood(Good good) {
+
+    public void addgood(Good good) {
         goodList = update();
         goodList.add(good);
         serializeObject(goodList, way);
-        return good;
+        saveGood();
+
     }
+
 
     public void deleteGood(Good good) {
         goodList = update();
         goodList.remove(good);
-        saveUser();
+        saveGood();
     }
 
+    @Override
+    public List<Good> getAllGood() {
+        return null;
+    }
 
+    @Override
+    public Good findGoodById(int id) {
+        return null;
+    }
+
+    public List<Good> allGood() {
+        goodList= (List<Good>) deserializeObject(way);
+        return goodList;
+    }
 
     public List<Good> showAllGood() {
+        goodList= (List<Good>) deserializeObject(way);
         System.out.println(deserializeObject(way));
         return goodList;
     }
 
 
-    public Good findIDGood(int id) {
-        List<Good> users = update();
-        Optional<Good> good1 = goodList.stream().filter(good -> good.getId() == id).findFirst();
-        try {
-            if (good1.isEmpty()) {
-                System.out.println("Такого id не существует");
-            } else {
-                System.out.println(good1.get());
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return good1.get();
-    }
-
-
-    public void saveUser() {
+    public void saveGood() {
         serializeObject(goodList, way);
         update();
 

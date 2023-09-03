@@ -3,59 +3,78 @@ package by.pvt.project.service.imp;
 import by.pvt.project.domain.Role;
 import by.pvt.project.domain.User;
 import by.pvt.project.mapping.UserMapping;
-import by.pvt.project.repository.UserRepository;
+import by.pvt.project.repository.BD.UserRepositoryBD;
+import by.pvt.project.repository.file.UserRepositoryFile;
+import by.pvt.project.repository.serviceRep.UserRepository;
 import by.pvt.project.service.UserService;
 
 import java.util.List;
+import java.util.Optional;
 
 public class UserServerImp implements UserService {
-    private UserRepository userRepository;
+    private UserRepository userRepositoryDB;
     private UserMapping userMapping;
 
-    public UserServerImp(UserRepository userRepository, UserMapping userMapping) {
-        this.userRepository = userRepository;
-        this.userMapping = userMapping;
+    public UserServerImp() {
     }
 
-    public UserRepository getUserRepository() {
-        return userRepository;
-    }
-
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    public UserMapping getUserMapping() {
-        return userMapping;
-    }
-
-    public void setUserMapping(UserMapping userMapping) {
+    public UserServerImp(UserRepositoryBD userRepositoryBD, UserMapping userMapping) {
+        this.userRepositoryDB = userRepositoryBD;
         this.userMapping = userMapping;
     }
 
 
     @Override
     public User addUser(User user) {
-        return null;
+        userRepositoryDB.addUser(user);
+        return user;
     }
 
     @Override
     public void deleteUser(User user) {
-
+        userRepositoryDB.deleteUser(user);
     }
 
     @Override
     public List<User> showAllUsers() {
-        return null;
+        return userRepositoryDB.getAllUser();
+    }
+    public User findUserByLogin(String login) {
+        List<User> users = userRepositoryDB.getAllUser();
+        Optional<User> users2 = users.stream().filter(user -> user.getLogin().equals(login)).findFirst();
+
+        return users2.get();
     }
 
     @Override
-    public User findUserforID(int id) {
-        return null;
+    public User findUserByID(int id) {
+        List<User> users = userRepositoryDB.getAllUser();
+        Optional<User> users2 = users.stream().filter(user -> user.getId() == id).findFirst();
+
+        return users2.get();
     }
 
     @Override
     public User createUser(int id, String login, String password, String name, String surname) {
-        return new User(id,login,password,name,surname, Role.CLIENT);
+        User user= new User(id, login, password, name, surname, Role.CLIENT);
+
+        return user;
     }
+
+    public User cheakPassword(String login, String password) {
+        List<User> users = userRepositoryDB.getAllUser();
+        Optional<User> user1 = users.stream().filter(user -> user.getPassword().equals(password)).findFirst();
+
+        return user1.get();
+    }
+
+    @Override
+    public List<User> userlist() {
+        return userRepositoryDB.getAllUser();
+    }
+
+    public  int countlist(){
+        return userRepositoryDB.getAllUser().size();
+    }
+
 }
