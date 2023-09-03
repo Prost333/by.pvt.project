@@ -8,13 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface BasketService {
-    Basket compliteOrder(int id);
-    Order cancelOrder(Order order);
-    Basket creatBasket(int id, int orderid, int count, double price,List<Long> orderList);
+
+
+    Basket creatBasket(int id, int userid,int orderid, int count, double price);
     List<Basket>baketlist();
-    double sumPrice(int userid);
    Basket findBasketById(int id);
     void removeBasket(Basket basket);
-    List<Long> getIdOrder(List<Order> orderList);
+
 
 }

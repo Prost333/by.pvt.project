@@ -1,13 +1,13 @@
-package by.pvt.project.repository;
+package by.pvt.project.repository.file;
 
 import by.pvt.project.domain.Order;
 import by.pvt.project.domain.Status;
+import by.pvt.project.repository.FileWorker;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class OrderRepository extends  FileWorker{
+public class OrderRepositoryFile extends FileWorker {
     public static List<Order> orderList = new ArrayList<>();
     public static String way = "C:\\Project Java\\by.pvt.project\\by.pvt.core\\src\\main\\java\\by\\pvt\\project\\data\\Order.txt";
     public Order addOrder(Order order) {
@@ -17,21 +17,10 @@ public class OrderRepository extends  FileWorker{
         saveOrder();
         return order;
     }
-    public Order addfinalOrder(Order order) {
-        orderList= update();
-        orderList.add(order);
-        serializeObject(orderList, way);
-        saveOrder();
-        return order;
-    }
+
     public  List<Order> getAllOrder(){
         orderList= (List<Order>) deserializeObject(way);
         return orderList;
-    }
-    public void deleteAllOrder(List<Order>order) {
-        orderList = update();
-        orderList.removeAll(order);
-//        saveOrder();
     }
     public List<Order> delitOrderbyStatus(int userid, Status oldstatus) {
         orderList=((List<Order>) deserializeObject(way));

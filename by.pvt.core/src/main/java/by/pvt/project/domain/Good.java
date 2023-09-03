@@ -18,6 +18,9 @@ public class Good implements Serializable {
         this.code = code;
     }
 
+    public Good() {
+    }
+
     public String getName() {
         return name;
     }

@@ -5,37 +5,37 @@ import java.util.List;
 
 public class Basket implements Serializable {
     private  int id;
-    private  double price;
+    private int userId;
     private  int orderid;
-    private  int count;
-    private List<Long> orderList;
+    private  double price;
 
-    public Basket(int id, double price, int orderid, int count) {
+    private  int count;
+
+
+    public Basket(int id, int userId,double price, int orderid, int count) {
         this.id = id;
+        this.userId=userId;
         this.price = price;
         this.orderid = orderid;
         this.count = count;
     }
 
-    public Basket(int id, double price, int orderid, int count, List<Long> orderList) {
-        this.id = id;
-        this.price = price;
-        this.orderid = orderid;
-        this.count = count;
-        this.orderList = orderList;
+    public Basket() {
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public Basket(int id) {
         this.id = id;
     }
 
-    public List<Long> getOrderList() {
-        return orderList;
-    }
 
-    public void setOrderList(List<Long> orderList) {
-        this.orderList = orderList;
-    }
 
     public int getId() {
         return id;
@@ -73,10 +73,10 @@ public class Basket implements Serializable {
     public String toString() {
         return "Basket{" +
                 "id=" + id +
+                ", userId=" + userId +
+                ", orderid=" + orderid +
                 ", price=" + price +
-                ", Basketid=" + orderid +
                 ", count=" + count +
-                ", orderList=" + orderList +
                 '}';
     }
 }

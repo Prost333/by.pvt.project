@@ -5,7 +5,7 @@ import by.pvt.project.domain.Good;
 import java.util.List;
 
 public interface GoodService {
-    Good addGood (Good good);
+    void addGood (Good good);
     void deliteGood (int id);
     Good changeType (Good good,String type);
     Good changePrice(Good good, double price);

@@ -4,7 +4,7 @@ package by.pvt.project.mapping;
 import by.pvt.project.domain.User;
 import by.pvt.project.dto.UserRequest;
 import by.pvt.project.dto.UserResponse;
-import by.pvt.project.repository.UserRepository;
+import by.pvt.project.repository.file.UserRepositoryFile;
 import by.pvt.project.service.imp.UserServerImp;
 
 public class UserMapping {
@@ -16,9 +16,12 @@ public class UserMapping {
     }
 
     public User requestUser(UserRequest userRequest) {
-        UserRepository userRepository=new UserRepository();
-        User user=userRepository.update().stream().filter(user1 -> user1.getPassword().
-                equals(userRequest.getPassword())).findFirst().orElseThrow();
+
+        User user= new User();
+        user.setLogin(userRequest.getLogin());
+        user.setPassword(userRequest.getPassword());
+        user.setName(userRequest.getName());
+        user.setSurname(userRequest.getSurname());
         return  user;
     }
 }

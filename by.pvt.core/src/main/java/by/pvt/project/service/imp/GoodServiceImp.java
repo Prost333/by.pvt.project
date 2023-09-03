@@ -1,9 +1,9 @@
 package by.pvt.project.service.imp;
 
 import by.pvt.project.domain.Good;
-import by.pvt.project.domain.User;
 import by.pvt.project.mapping.GoodMapping;
-import by.pvt.project.repository.GoodRepository;
+import by.pvt.project.repository.BD.GoodRepositoryBD;
+import by.pvt.project.repository.file.GoodRepositoryFile;
 import by.pvt.project.service.GoodService;
 
 import java.util.List;
@@ -11,32 +11,16 @@ import java.util.Optional;
 
 public class GoodServiceImp implements GoodService {
     private GoodMapping goodMapping;
-    private GoodRepository goodRepository;
+    private GoodRepositoryBD goodRepositoryBD;
 
-    public GoodServiceImp(GoodMapping goodMapping, GoodRepository goodRepository) {
+    public GoodServiceImp(GoodMapping goodMapping, GoodRepositoryBD goodRepositoryBD) {
         this.goodMapping = goodMapping;
-        this.goodRepository = goodRepository;
-    }
-
-    public GoodMapping getGoodMapping() {
-        return goodMapping;
-    }
-
-    public void setGoodMapping(GoodMapping goodMapping) {
-        this.goodMapping = goodMapping;
-    }
-
-    public GoodRepository getGoodRepository() {
-        return goodRepository;
-    }
-
-    public void setGoodRepository(GoodRepository goodRepository) {
-        this.goodRepository = goodRepository;
+        this.goodRepositoryBD= goodRepositoryBD;
     }
 
     @Override
-    public Good addGood(Good good) {
-        return goodRepository.addGood(good);
+    public void addGood(Good good) {
+         goodRepositoryBD.addgood(good);
     }
 
 
@@ -45,7 +29,6 @@ public class GoodServiceImp implements GoodService {
     public Good changeType(Good good, String type) {
         good=findIDGood(good.getId());
         good.setType(type);
-        goodRepository.saveGood();
         return good;
     }
 
@@ -53,7 +36,6 @@ public class GoodServiceImp implements GoodService {
     public Good changePrice(Good good, double price) {
         good=findIDGood(good.getId());
         good.setPrice(price);
-        goodRepository.saveGood();
         return good;
     }
 
@@ -61,7 +43,6 @@ public class GoodServiceImp implements GoodService {
     public Good changeName(Good good, String name) {
         good=findIDGood(good.getId());
         good.setName(name);
-        goodRepository.saveGood();
         return good;
     }
 
@@ -69,7 +50,6 @@ public class GoodServiceImp implements GoodService {
     public Good changeCode(Good good, int code) {
         good=findIDGood(good.getId());
         good.setCode(code);
-        goodRepository.saveGood();
         return good;
     }
 
@@ -77,8 +57,8 @@ public class GoodServiceImp implements GoodService {
     public Good updateGood(int id,String name, String type, double price) {
         Good good=findIDGood(id);
         Good newGood=new Good(name,id,type,price,good.getCode());
-        goodRepository.deleteGood(good);
-        goodRepository.addGood(newGood);
+        goodRepositoryBD.deleteGood(good);
+        goodRepositoryBD.addgood(newGood);
         return newGood;
     }
 
@@ -89,48 +69,31 @@ public class GoodServiceImp implements GoodService {
 
     @Override
     public List<Good> goodList() {
-        return goodRepository.allGood();
+        return goodRepositoryBD.getAllGood();
     }
 
     @Override
     public int SizeGood() {
-        return goodRepository.update().size();
+        return goodRepositoryBD.getAllGood().size();
     }
 
     @Override
     public Good findGood(int id) {
-        List<Good> users = goodRepository.update();
+        List<Good> users = goodRepositoryBD.getAllGood();
         Optional<Good> users2 = users.stream().filter(good -> good.getId() == id).findFirst();
-        try {
-            if (users2.isEmpty()) {
-                throw  new RuntimeException();
-            } else {
-                System.out.println(users2.get());
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
         return users2.get();
     }
 
     public Good findIDGood(int id) {
-        List<Good> users = goodRepository.update();
+        List<Good> users = goodRepositoryBD.getAllGood();
         Optional<Good> good1 = users.stream().filter(good -> good.getId() == id).findFirst();
-        try {
-            if (good1.isEmpty()) {
-                throw  new RuntimeException();
-            } else {
-                System.out.println(good1.get());
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+
         return good1.get();
     }
     @Override
     public void deliteGood(int id) {
         Good good=findIDGood(id);
-        goodRepository.deleteGood(good);
+        goodRepositoryBD.deleteGood(good);
 
     }
 }

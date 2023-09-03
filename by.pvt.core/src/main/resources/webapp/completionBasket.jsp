@@ -24,12 +24,11 @@
 <c:out value ="${statusOrder}"/>
 <br>
 <br>
-<tr>Общая сумма заказа</tr>
-<c:out value ="${price}"/>
 <form name="Form"
       method="get"
       action="http://localhost:8080/basketServlet">
         <input type=submit value="оплатить заказ">
+        <input type="hidden" id=${userId} name="userId" value=${userId}>
 
 </form>
 
@@ -44,7 +43,7 @@
 
 </form>
 
-<c:out value ="${allBasket}"/>
+<c:out value ="${orderclient}"/>
 
 
 </body>

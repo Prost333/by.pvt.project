@@ -50,5 +50,12 @@ action="http://localhost:8080/adminS">
 </c:forEach>
 </table>
 
+<form name="Form"
+method="post"
+action="http://localhost:8080/completionBasket.jsp">
+<input type=submit value="Basket">
+</br>
+</form>
+
 </html>
 </body>

@@ -3,107 +3,47 @@ package by.pvt.project.service.imp;
 import by.pvt.project.domain.Good;
 import by.pvt.project.domain.Order;
 import by.pvt.project.domain.Status;
-import by.pvt.project.repository.FileWorker;
-import by.pvt.project.repository.OrderRepository;
+import by.pvt.project.repository.BD.OrderRepositoryBD;
 import by.pvt.project.service.OrderService;
-import org.eclipse.tags.shaded.org.apache.xpath.operations.Or;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class OrderServerImp  implements OrderService {
-    OrderRepository orderRepository = new OrderRepository();
+    OrderRepositoryBD orderRepositoryBD;
 
-    public OrderServerImp(OrderRepository orderRepository) {
-        this.orderRepository = orderRepository;
+    public OrderServerImp(OrderRepositoryBD orderRepositoryBD) {
+        this.orderRepositoryBD = orderRepositoryBD;
     }
 
     @Override
-    public Order addOrder(Order order) {
-        return orderRepository.addOrder(order);
+    public void addOrder(Order order) {
+         orderRepositoryBD.addOrder(order);
     }
 
     @Override
     public Order CreatOrder(Good good, int userId) {
-        Order order = new Order(orderRepository.update().size() + 1, userId, good.getId(), 1, good.getPrice(), Status.UNFORMED);
-//        orderRepository.addOrder(order);
-
+        Order order = new Order(orderRepositoryBD.getAllOrder().size() + 1, userId, good.getId(),
+                1, good.getPrice(), Status.UNFORMED);
         return order;
     }
 
     @Override
     public List<Order> getOrderbyClient(int userId) {
-        List<Order> users = orderRepository.update();
+        List<Order> users = orderRepositoryBD.getAllOrder();
         List<Order> order1 = users.stream().filter(order -> order.getUserId() == userId).toList();
-        try {
-            if (order1.isEmpty()) {
-                throw  new RuntimeException();
-            } else {
-                System.out.println(order1);
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
         return order1;
     }
 
 
     @Override
     public List<Order> getAllOrder() {
-        return orderRepository.getAllOrder();
-    }
-
-    public List<Order> showAllOrder() {
-        return orderRepository.showAllOrder();
+        return orderRepositoryBD.getAllOrder();
     }
 
     @Override
-    public List<Order> getOrderByStatus(Status status) {
-        List<Order> users = orderRepository.update();
-        List<Order> order1 = users.stream().filter(order -> order.getStatus().equals(status)).toList();
-        try {
-            if (order1.isEmpty()) {
-                throw  new RuntimeException();
-            } else {
-                System.out.println(order1);
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return order1;
-    }
-
-    public Order findIDOrder(int id) {
-        List<Order> users = orderRepository.update();
-        Optional<Order> order12 = users.stream().filter(order -> order.getId() == id).findFirst();
-        try {
-            if (order12.isEmpty()) {
-                throw  new RuntimeException();
-            } else {
-                System.out.println(order12.get());
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return order12.get();
-    }
-
-    @Override
-    public Order changStatus(Order order, Status status) {
-        Order order1 = findIDOrder(order.getId());
-        order1.setStatus(status);
-        orderRepository.saveOrder();
-        return order;
-    }
-
-    public List<Order> update() {
-        return orderRepository.update();
-    }
-
     public void saveOrder() {
-        orderRepository.saveOrder();
+
     }
 
     @Override
@@ -129,52 +69,52 @@ public class OrderServerImp  implements OrderService {
     }
 
     public List<Order> orderListbyStatus(int userid, Status status) {
-        List<Order> users = orderRepository.update();
+        List<Order> users =orderRepositoryBD.getAllOrder();
         List<Order> orderList = users.stream().filter(order -> order.getUserId() == userid).
                 filter(order -> order.getStatus().equals(status)).collect(Collectors.toList());
-        try {
             if (orderList.isEmpty()) {
-                throw  new RuntimeException();
-            } else {
-                System.out.println(orderList);
+                orderList=new ArrayList<>();
             }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
         return orderList;
     }
 
     public List<Order> delitOrderbyStatus(int userid, Status oldstatus) {
-        return orderRepository.delitOrderbyStatus(userid,oldstatus);
+        List<Order>orderList=orderRepositoryBD.getAllOrder();
+        for (Order order:orderList) {
+            if (order.getStatus().equals(oldstatus)){
+                orderRepositoryBD.deleteOrder(order);
+            }
+        }
+        return orderList;
     }
 
     @Override
     public Order findOrderbyid(int id) {
-        Optional<Order> order = orderRepository.update().stream().filter(order1 -> order1.getId() == id).findFirst();
-        saveOrder();
-        return order.get();
+       return orderRepositoryBD.findOrderById(id);
     }
 
 
-    public List<Order> newStatus(int userid, Status oldstatus, Status newstatus) {
-        List<Order> orderList = new ArrayList<>();
-        for (Order order : orderRepository.update()) {
-            if (order.getUserId() == userid && order.getStatus().equals(oldstatus)) {
-                orderRepository.deleteOrder(order);
+    public void newStatus(int userid, Status oldstatus, Status newstatus) {
+        List<Order>orderList=orderRepositoryBD.getAllOrder().stream().filter(order -> order.getUserId()==userid).
+                filter(order1 ->order1.getStatus().equals(oldstatus)).collect(Collectors.toList());
+
+        for (Order order : orderList) {
                 Order order1 = new Order(order.getId(), order.getUserId(), order.getGoodid(), order.getCount(), order.getCost(), newstatus);
-                orderRepository.addfinalOrder(order1);
-                orderList.add(order1);
-            }
-        }
-        try {
-            for (Order order:orderRepository.update()) {
-                delitOrderbyStatus(userid,oldstatus);
-                saveOrder();
-            }
-        }catch (Throwable e){
+                try {
+                    orderRepositoryBD.deleteOrder(order);
+                }catch (Throwable e){
+//                    throw new RuntimeException(e.getMessage());
+                }
+                orderRepositoryBD.addREOrder(order1);
 
         }
-        return orderList;
+    }
+    public void changeStatus(int userId, String oldStatus, String newStatus){
+            List<Order>orderList=orderRepositoryBD.getAllOrder().stream().filter(order -> order.getUserId()==userId).
+                    filter(order -> order.getStatus().name().equals(oldStatus)).collect(Collectors.toList());
+        for (Order order:orderList) {
+            orderRepositoryBD.changeOrder(userId,oldStatus,newStatus);
+        }
     }
 
 

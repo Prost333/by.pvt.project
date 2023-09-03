@@ -1,14 +1,14 @@
-package by.pvt.project.repository;
+package by.pvt.project.repository.file;
 
 
 
 import by.pvt.project.domain.Basket;
-import by.pvt.project.domain.Good;
+import by.pvt.project.repository.FileWorker;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BasketRepository extends FileWorker{
+public class BasketRepositoryFile extends FileWorker {
     public static List<Basket> basketList = new ArrayList<>();
     public static String way = "C:\\Project Java\\by.pvt.project\\by.pvt.core\\src\\main\\java\\by\\pvt\\project\\data\\Basket.txt";
     public Basket addBasket(Basket basket) {
@@ -19,13 +19,7 @@ public class BasketRepository extends FileWorker{
         return basket;
     }
 
-    public Basket  addBasketloc(Basket basket) {
-        basketList= update();
-        basketList.add(basket);
-        serializeObject(basketList, way);
-        saveBasket();
-        return basket;
-    }
+
     public void deleteBasked(Basket basket) {
         basketList = update();
         basketList.remove(basket);

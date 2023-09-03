@@ -21,7 +21,6 @@ public class AdminServlet extends HttpServlet {
         GoodService goodService = ApplicationContext.getInstance().getGoodService();
         OrderService orderService = ApplicationContext.getInstance().getOrderService();
         UserService userService = ApplicationContext.getApplicationContext().getUserService();
-        BasketService basketService=ApplicationContext.getInstance().getBasketService();
         Good good = goodService.findGood(Integer.parseInt(req.getParameter("id")));
         try {
             Order order = orderService.CreatOrder(good, userService.findUserByID(Integer.parseInt(req.getParameter("userId"))).getId());

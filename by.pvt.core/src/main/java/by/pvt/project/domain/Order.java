@@ -22,6 +22,9 @@ public class Order implements Serializable {
         this.status = status;
     }
 
+    public Order() {
+    }
+
     public double getCount() {
         return count;
     }

@@ -1,12 +1,17 @@
 package by.pvt.project.config;
 
+import by.pvt.project.connector.PostgresqlConnector;
 import by.pvt.project.mapping.BasketMapping;
 import by.pvt.project.mapping.GoodMapping;
 import by.pvt.project.mapping.UserMapping;
-import by.pvt.project.repository.BasketRepository;
-import by.pvt.project.repository.GoodRepository;
-import by.pvt.project.repository.OrderRepository;
-import by.pvt.project.repository.UserRepository;
+import by.pvt.project.repository.BD.BasketRepositoryBD;
+import by.pvt.project.repository.BD.GoodRepositoryBD;
+import by.pvt.project.repository.BD.OrderRepositoryBD;
+import by.pvt.project.repository.BD.UserRepositoryBD;
+import by.pvt.project.repository.file.BasketRepositoryFile;
+import by.pvt.project.repository.file.GoodRepositoryFile;
+import by.pvt.project.repository.file.OrderRepositoryFile;
+import by.pvt.project.repository.file.UserRepositoryFile;
 import by.pvt.project.service.BasketService;
 import by.pvt.project.service.GoodService;
 import by.pvt.project.service.OrderService;
@@ -18,31 +23,33 @@ import by.pvt.project.service.imp.UserServerImp;
 
 public class ApplicationContext {
     private static ApplicationContext applicationContext;
-    private final UserRepository userRepository;
-    private final GoodRepository goodRepository;
-    private final GoodMapping goodMapping;
-    private final UserMapping userMapping;
-    private final UserService userService;
-    private  final GoodService goodService;
-    private  final BasketService basketService;
-    private  final BasketMapping basketMapping;
-    private final  BasketRepository basketRepository;
-    private final OrderRepository orderRepository;
-    private final OrderService orderService;
+    private final BasketRepositoryBD basketRepositoryBD;
+    private UserRepositoryBD userRepositoryBD;
+    private GoodRepositoryBD goodRepositoryBD;
+    private  GoodMapping goodMapping;
+    private  UserMapping userMapping;
+    private  UserService userService;
+    private   GoodService goodService;
+    private  BasketService basketService;
+    private  BasketMapping basketMapping;
+    private OrderRepositoryBD orderRepositoryBD;
+    private  OrderService orderService;
 
 
-    private ApplicationContext( ) {
-        this.userRepository = new UserRepository();
-        this.goodRepository = new GoodRepository();
+
+
+    private ApplicationContext() {
+        this.userRepositoryBD = new UserRepositoryBD(new PostgresqlConnector());
+        this.goodRepositoryBD = new GoodRepositoryBD(new PostgresqlConnector());
         this.goodMapping = new GoodMapping();
         this.userMapping = new UserMapping();
-        this.userService =  new UserServerImp(userRepository,userMapping);
-        this.goodService = new GoodServiceImp(goodMapping,goodRepository);
-        this.basketRepository = new BasketRepository();
+        this.userService =  new UserServerImp(userRepositoryBD,userMapping);
+        this.goodService = new GoodServiceImp(goodMapping, goodRepositoryBD);
+        this.basketRepositoryBD = new BasketRepositoryBD(new PostgresqlConnector());
         this.basketMapping = new BasketMapping();
-        this.basketService = new BasketServerImp(basketRepository, basketMapping);
-        this.orderRepository=new OrderRepository();
-        this.orderService=new OrderServerImp(orderRepository);
+        this.basketService = new BasketServerImp(basketRepositoryBD, basketMapping);
+        this.orderRepositoryBD =new OrderRepositoryBD(new PostgresqlConnector());
+        this.orderService=new OrderServerImp(orderRepositoryBD);
     }
     public static ApplicationContext getInstance(){
         if (applicationContext==null){
@@ -50,6 +57,8 @@ public class ApplicationContext {
         }
         return applicationContext;
     }
+
+
 
     public static ApplicationContext getApplicationContext() {
         return applicationContext;
@@ -59,12 +68,16 @@ public class ApplicationContext {
         ApplicationContext.applicationContext = applicationContext;
     }
 
-    public UserRepository getUserRepository() {
-        return userRepository;
+    public UserRepositoryBD getUserRepositoryBD() {
+        return userRepositoryBD;
     }
 
-    public GoodRepository getGoodRepository() {
-        return goodRepository;
+    public void setUserRepositoryBD(UserRepositoryBD userRepositoryBD) {
+        this.userRepositoryBD = userRepositoryBD;
+    }
+
+    public GoodRepositoryBD getGoodRepository() {
+        return goodRepositoryBD;
     }
 
     public GoodMapping getGoodMapping() {
@@ -91,13 +104,12 @@ public class ApplicationContext {
         return basketMapping;
     }
 
-    public BasketRepository getBasketRepository() {
-        return basketRepository;
+    public BasketRepositoryBD getBasketRepositoryBD() {
+        return basketRepositoryBD;
     }
 
-
-    public OrderRepository getOrderRepository() {
-        return orderRepository;
+    public OrderRepositoryBD getOrderRepositoryBD() {
+        return orderRepositoryBD;
     }
 
     public OrderService getOrderService() {

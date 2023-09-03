@@ -3,9 +3,7 @@ package by.pvt.project.servlets;
 import by.pvt.project.config.ApplicationContext;
 import by.pvt.project.domain.Role;
 import by.pvt.project.domain.User;
-import by.pvt.project.repository.UserRepository;
 import by.pvt.project.service.UserService;
-import by.pvt.project.service.imp.UserServerImp;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,8 +11,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Enumeration;
 
 public class UserRegistration extends HttpServlet {
     @Override
@@ -33,10 +29,10 @@ public class UserRegistration extends HttpServlet {
             httpSession.setAttribute("userId", user.getId());
             req.setAttribute("userId", user.getId());
 
-            if (user.getRole().equals(Role.ADMIN)) {
+            if (user.getRole().name().equals(Role.ADMIN.name())) {
                 httpSession.setAttribute("filter", user);
             }
-            if (user.getRole().equals(Role.ADMIN)) {
+            if (user.getRole().name().equals(Role.ADMIN.name())) {
                 req.getRequestDispatcher("/goodRegistration.jsp").forward(req, resp);
             } else {
                 req.getParameter("/goodMenu.jsp");

@@ -5,8 +5,8 @@ import by.pvt.project.domain.Basket;
 import by.pvt.project.domain.Order;
 import by.pvt.project.domain.Status;
 import by.pvt.project.mapping.BasketMapping;
-import by.pvt.project.repository.BasketRepository;
-import by.pvt.project.repository.OrderRepository;
+import by.pvt.project.repository.BD.BasketRepositoryBD;
+import by.pvt.project.repository.file.BasketRepositoryFile;
 import by.pvt.project.service.BasketService;
 import by.pvt.project.service.OrderService;
 
@@ -16,34 +16,21 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class BasketServerImp implements BasketService {
-    private BasketRepository basketRepository;
+    private BasketRepositoryBD basketRepositoryBD;
     private BasketMapping basketMapping;
 
 
-    public BasketServerImp(BasketRepository basketRepository, BasketMapping basketMapping) {
-        this.basketRepository = basketRepository;
+    public BasketServerImp(BasketRepositoryBD basketRepositoryBD, BasketMapping basketMapping) {
+        this.basketRepositoryBD = basketRepositoryBD;
         this.basketMapping = basketMapping;
     }
 
-    @Override
-    public Basket compliteOrder(int id) {
-//        Optional<Basket> basket = basketRepository.update().stream().filter(order1 -> order1.getId() == id).findFirst();
-//        basket.get().setOrderList(orderList);
-//        basketRepository.addBasket(basket.get());
-//        return basket.get();
-        return null;
-    }
-
-    @Override
-    public Order cancelOrder(Order order) {
-        return null;
-    }
 
 
     @Override
-    public Basket creatBasket(int id, int orderid, int count, double price, List<Long> orderList) {
-        Basket basket1 = new Basket(id, price, orderid, count, orderList);
-        basketRepository.addBasket(basket1);
+    public Basket creatBasket(int id, int userId,int orderid, int count, double price) {
+        Basket basket1 = new Basket(id, userId,price, orderid, count);
+        basketRepositoryBD.addBasket(basket1);
 
         return basket1;
     }
@@ -51,41 +38,17 @@ public class BasketServerImp implements BasketService {
 
     @Override
     public List<Basket> baketlist() {
-        return basketRepository.update();
-    }
-
-    @Override
-    public double sumPrice(int userid) {
-        OrderService orderService = ApplicationContext.getInstance().getOrderService();
-        List<Order> o1=orderService.orderListbyStatus(userid, Status.FORMED);
-        Basket basket = new Basket(userid);
-        List<Long> orderList = basket.getOrderList();
-        double sum = 0;
-        for (Long i : orderList) {
-            Order order = orderService.findOrderbyid(Math.toIntExact(i));
-            sum += order.getCost();
-        }
-        return sum;
+        return basketRepositoryBD.getAllBasket();
     }
 
 
     @Override
     public Basket findBasketById(int id) {
-       Optional<Basket> basket = basketRepository.update().stream().filter(order1 -> order1.getId() == id).findFirst();
+       return  basketRepositoryBD.findBasketById(id);
 
-       return basket.get();
     }
-
     public void removeBasket(Basket basket) {
-        basketRepository.deleteBasked(basket);
+        basketRepositoryBD.deleteBasket(basket);
     }
 
-    @Override
-    public List<Long> getIdOrder(List<Order> orderList) {
-        List<Long> longList = new ArrayList<>();
-        for (Order order : orderList) {
-            longList.add((long) order.getId());
-        }
-        return longList;
-    }
 }

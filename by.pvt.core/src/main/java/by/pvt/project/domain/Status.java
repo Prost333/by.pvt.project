@@ -2,10 +2,10 @@ package by.pvt.project.domain;
 
 public enum Status {
 
-    UNFORMED("Не сформирован"),
-    FORMED("Сформирован"),
-    ON_THE_WAY("В пути"),
-    DELIVERED("Доставлен");
+    UNFORMED("UNFORMED"),
+    FORMED("FORMED"),
+    ON_THE_WAY("ON_THE_WAY"),
+    DELIVERED("DELIVERED");
 
     String name;
 
