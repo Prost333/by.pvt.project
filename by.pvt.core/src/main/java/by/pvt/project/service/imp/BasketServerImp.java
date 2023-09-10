@@ -1,31 +1,56 @@
 package by.pvt.project.service.imp;
 
+import by.pvt.project.config.ApplicationContext;
+import by.pvt.project.domain.Basket;
+import by.pvt.project.domain.Order;
+import by.pvt.project.domain.Status;
 import by.pvt.project.mapping.BasketMapping;
-import by.pvt.project.repository.BasketRepository;
+import by.pvt.project.repository.BD.BasketRepositoryBD;
+import by.pvt.project.repository.file.BasketRepositoryFile;
 import by.pvt.project.service.BasketService;
+import by.pvt.project.service.OrderService;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class BasketServerImp implements BasketService {
-    private BasketRepository basketRepository;
-    private BasketMapping basketMapping;
+    private final BasketRepositoryBD basketRepositoryBD;
+    private final BasketMapping basketMapping;
 
-    public BasketServerImp(BasketRepository basketRepository, BasketMapping basketMapping) {
-        this.basketRepository = basketRepository;
+
+    public BasketServerImp(BasketRepositoryBD basketRepositoryBD, BasketMapping basketMapping) {
+        this.basketRepositoryBD = basketRepositoryBD;
         this.basketMapping = basketMapping;
     }
 
-    public BasketRepository getBasketRepository() {
-        return basketRepository;
+
+    @Override
+    public Basket creatBasket(int id, int userId, int orderid, int count, double price) {
+        Basket basket1 = new Basket(id, userId, price, orderid, count);
+        basketRepositoryBD.addBasket(basket1);
+        return basket1;
     }
 
-    public void setBasketRepository(BasketRepository basketRepository) {
-        this.basketRepository = basketRepository;
+
+    @Override
+    public List<Basket> baketlist() {
+        return basketRepositoryBD.getAllBasket();
     }
 
-    public BasketMapping getBasketMapping() {
-        return basketMapping;
+
+    @Override
+    public Basket findBasketById(int id) {
+        return basketRepositoryBD.findBasketById(id);
+
     }
 
-    public void setBasketMapping(BasketMapping basketMapping) {
-        this.basketMapping = basketMapping;
+    public void removeBasket(Basket basket) {
+        basketRepositoryBD.deleteBasket(basket);
     }
+    public Basket findBasketByuserIdandSum ( int id){
+        return  basketRepositoryBD.findBasketByuserIdandSum(id);
+    }
+
 }

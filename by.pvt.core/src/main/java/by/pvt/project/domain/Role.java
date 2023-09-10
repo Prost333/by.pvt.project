@@ -1,8 +1,8 @@
 package by.pvt.project.domain;
 
 public enum Role {
-    ADMIN("Администратор"),
-    CLIENT("Клиент");
+    ADMIN("Admin"),
+    CLIENT("Client");
     String name;
 
     Role(String name) {
