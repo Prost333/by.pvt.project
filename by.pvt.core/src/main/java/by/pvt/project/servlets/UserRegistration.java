@@ -15,9 +15,7 @@ import java.io.IOException;
 public class UserRegistration extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserService userService = ApplicationContext.getInstance().getUserService();
-        req.setAttribute("allUsers",userService.userlist());
-        req.getRequestDispatcher("/goodRegistration.jsp").forward(req,resp);
+
     }
 
     @Override

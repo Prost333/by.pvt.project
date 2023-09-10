@@ -6,6 +6,7 @@ C:\Project Java\by.pvt.project\by.pvt.core\src\main\java\by\pvt\project\domain\G
 C:\Project Java\by.pvt.project\by.pvt.core\src\main\java\by\pvt\project\repository\BD\BasketRepositoryBD.java
 C:\Project Java\by.pvt.project\by.pvt.core\src\main\java\by\pvt\project\config\ApplicationContext.java
 C:\Project Java\by.pvt.project\by.pvt.core\src\main\java\by\pvt\project\filter\Authentication.java
+C:\Project Java\by.pvt.project\by.pvt.core\src\main\java\by\pvt\project\servlets\BasketServletFinish.java
 C:\Project Java\by.pvt.project\by.pvt.core\src\main\java\by\pvt\project\servlets\UserServlet.java
 C:\Project Java\by.pvt.project\by.pvt.core\src\main\java\by\pvt\project\service\OrderService.java
 C:\Project Java\by.pvt.project\by.pvt.core\src\main\java\by\pvt\project\servlets\UserRegistration.java

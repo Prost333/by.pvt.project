@@ -11,4 +11,5 @@ public interface OrderRepository {
     void deleteOrderByStatys(int userid, Status oldstatus);
     Order findOrderById(int id);
     List<Order> getAllOrder();
+    int orderCount(int userId);
 }

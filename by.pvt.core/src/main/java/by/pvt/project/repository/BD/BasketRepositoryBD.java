@@ -49,18 +49,40 @@ public class BasketRepositoryBD implements BasketRepository {
                 Connection connection = postgresqlConnector.getConnector();
                 PreparedStatement preparedStatement = connection.prepareStatement(DELITE);
                 preparedStatement.setInt(1, basket.getId());
-                preparedStatement.executeQuery();
+                preparedStatement.executeUpdate();
+//               по книге не забудь проверить потом
             } catch (SQLException e) {
                 throw new RuntimeException(e.getMessage());
             }
 
         }
+    public Basket findBasketByuserIdandSum ( int id){
+        try {
+            Connection connection = postgresqlConnector.getConnector();
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from project.basket s where s.id=? and price=0");
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet == null) {
+                return new Basket();
+            }
+            resultSet.next();
+            String userId = resultSet.getString(2);
+            String orderId = resultSet.getString(3);
+            String count = resultSet.getString(4);
+            String price = resultSet.getString(5);
+            Basket basket=new Basket(id,Integer.valueOf(userId),Double.parseDouble(price),
+                    Integer.valueOf(orderId),Integer.valueOf(count));
+            return basket;
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 
         @Override
         public Basket findBasketById ( int id){
             try {
                 Connection connection = postgresqlConnector.getConnector();
-                PreparedStatement preparedStatement = connection.prepareStatement("select * from project.order s where s.id=?");
+                PreparedStatement preparedStatement = connection.prepareStatement("select * from project.basket s where s.id=?");
                 preparedStatement.setInt(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet == null) {
@@ -102,4 +124,23 @@ public class BasketRepositoryBD implements BasketRepository {
             }
             return basketList;
         }
+    public void changeOrder(int userid, double price, int count) {
+        Connection connection = postgresqlConnector.getConnector();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("update project.basket set price=?, count=? where user_id=?");
+            preparedStatement.setDouble(1, price);
+            preparedStatement.setInt(2, count);
+            preparedStatement.setInt(3, userid);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e.getMessage());
+            }
+        }
+    }
+
     }

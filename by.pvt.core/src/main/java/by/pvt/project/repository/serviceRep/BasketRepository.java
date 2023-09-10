@@ -9,4 +9,5 @@ public interface BasketRepository {
     void deleteBasket(Basket basket);
     Basket findBasketById(int id);
     List<Basket> getAllBasket();
+    void changeOrder(int userid, double price, int count);
 }

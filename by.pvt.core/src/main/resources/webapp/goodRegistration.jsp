@@ -93,9 +93,21 @@ action="http://localhost:8080/goodMenu.jsp">
 </div>
 <form name="Form"
 method="post"
-action="http://localhost:8080/goodreg">
-<input type=submit value="List Product">
+action="http://localhost:8080/AdminServletF">
+<input type=submit value="List Users">
 </br>
+</form>
+<c:out value ="${orderlistbyClient}"/>
+<form name="Form"
+      method="get"
+      action="http://localhost:8080/AdminServletF">
+    <tаble>
+        <tr>
+            <td><B>id</B></td>
+            <td><input type=textbox name="listID" size="7" value=" "></td>
+        </tr>
+        <input type=submit value="Заказы пользователя">
+    </table>
 </form>
 </body>
 </html>

@@ -25,6 +25,7 @@ by\pvt\project\domain\Status.class
 by\pvt\project\filter\Authentication.class
 by\pvt\project\repository\file\GoodRepositoryFile.class
 by\pvt\project\domain\Basket.class
+by\pvt\project\servlets\BasketServletFinish.class
 by\pvt\project\repository\serviceRep\BasketRepository.class
 by\pvt\project\repository\FileWorker.class
 by\pvt\project\Main.class

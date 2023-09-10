@@ -7,7 +7,7 @@
       method="post"
       action="http://localhost:8080/regist.jsp">
 
-    <b> Не верный логин или пароль попробуйте войти снова или зарегистрируйтесь  </b>
+    <b> Что-то пошло не так </b>
     <br>
     <br>
     <br>
@@ -27,7 +27,7 @@
           method="post"
           action="http://localhost:8080/aut.jsp">
 
-    <input type=submit value="Try again">
+    <input type=submit value="entry">
     </form>
     </body>
     </html>

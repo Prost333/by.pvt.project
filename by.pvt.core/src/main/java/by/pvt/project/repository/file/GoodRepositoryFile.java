@@ -41,6 +41,21 @@ public class GoodRepositoryFile extends FileWorker implements GoodRepository {
         return null;
     }
 
+    @Override
+    public void changeGoodprice(int goodId, double price) {
+
+    }
+
+    @Override
+    public void changeGoodType(int goodId, String type) {
+
+    }
+
+    @Override
+    public void changeGoodName(int goodId, String name) {
+
+    }
+
     public List<Good> allGood() {
         goodList= (List<Good>) deserializeObject(way);
         return goodList;

@@ -9,5 +9,7 @@ public interface UserRepository {
     void deleteUser(User user);
     List<User> getAllUser();
     User findUserById(int id);
+    User findUserByLogin(String login);
+    User findUserByLoginandPassword(String login, String password);
 
 }

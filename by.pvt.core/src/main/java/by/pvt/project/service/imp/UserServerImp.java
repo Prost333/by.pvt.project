@@ -39,21 +39,17 @@ public class UserServerImp implements UserService {
     public List<User> showAllUsers() {
         return userRepositoryDB.getAllUser();
     }
-    public User findUserByLogin(String login) {
-        List<User> users = userRepositoryDB.getAllUser();
-        Optional<User> users2 = users.stream().filter(user -> user.getLogin().equals(login)).findFirst();
 
-        return users2.get();
+    public User findUserByLogin(String login) {
+        User user= userRepositoryDB.findUserByLogin(login);
+        return user;
     }
 
     @Override
     public User findUserByID(int id) {
-        List<User> users = userRepositoryDB.getAllUser();
-        Optional<User> users2 = users.stream().filter(user -> user.getId() == id).findFirst();
-
-        return users2.get();
+        User user=userRepositoryDB.findUserById(id);
+        return user;
     }
-
     @Override
     public User createUser(int id, String login, String password, String name, String surname) {
         User user= new User(id, login, password, name, surname, Role.CLIENT);
@@ -62,19 +58,12 @@ public class UserServerImp implements UserService {
     }
 
     public User cheakPassword(String login, String password) {
-        List<User> users = userRepositoryDB.getAllUser();
-        Optional<User> user1 = users.stream().filter(user -> user.getPassword().equals(password)).findFirst();
-
-        return user1.get();
+        return userRepositoryDB.findUserByLoginandPassword(login,password);
     }
-
     @Override
     public List<User> userlist() {
         return userRepositoryDB.getAllUser();
     }
 
-    public  int countlist(){
-        return userRepositoryDB.getAllUser().size();
-    }
 
 }

@@ -15,8 +15,9 @@ public interface OrderService {
     double sumPrice(int userid,Status status);
     int sumCount(int userid, Status status);
     List<Order> orderListbyStatus(int userid, Status status);
-    void newStatus(int userid,Status oldstatus,Status newstatus);
     List<Order> delitOrderbyStatus(int userid, Status oldstatus);
     Order findOrderbyid(int id);
     void changeStatus(int userId, String oldStatus, String newStatus);
+    int orderCount(int userId);
+    void deleteOrder(int userid, int orderid);
 }

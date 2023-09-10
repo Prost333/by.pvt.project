@@ -100,4 +100,65 @@ public class GoodRepositoryBD implements GoodRepository {
         }
     }
 
+    public void changeGoodName(int goodId, String name) {
+        Connection connection = postgresqlConnector.getConnector();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("update project.good\n" +
+                    "set name=?\n" +
+                    "where id=?");
+            preparedStatement.setString(1,name);
+            preparedStatement.setInt(2, goodId);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e.getMessage());
+            }
+        }
+    }
+    public void changeGoodType(int goodId, String type) {
+        Connection connection = postgresqlConnector.getConnector();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("update project.good\n" +
+                    "set type=?\n" +
+                    "where id=?");
+            preparedStatement.setString(1,type);
+            preparedStatement.setInt(2, goodId);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e.getMessage());
+            }
+        }
+    }
+    public void changeGoodprice(int goodId, double price) {
+        Connection connection = postgresqlConnector.getConnector();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("update project.good\n" +
+                    "set price=?\n" +
+                    "where id=?");
+            preparedStatement.setDouble(1,price);
+            preparedStatement.setInt(2, goodId);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e.getMessage());
+            }
+        }
+    }
+
 }

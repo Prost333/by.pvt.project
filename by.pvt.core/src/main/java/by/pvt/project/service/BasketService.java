@@ -14,6 +14,8 @@ public interface BasketService {
     List<Basket>baketlist();
    Basket findBasketById(int id);
     void removeBasket(Basket basket);
+    Basket findBasketByuserIdandSum ( int id);
+
 
 
 }

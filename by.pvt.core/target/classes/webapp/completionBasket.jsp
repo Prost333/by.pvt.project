@@ -16,8 +16,24 @@
 
 <br>
 <br>
-<c:out value ="${allorder}"/>
 
+<c:out value ="${orderclient}"/>
+
+<br>
+<br>
+
+<form name="Form"
+      method="post"
+      action="http://localhost:8080/DeleteOrder">
+    <tаble>
+        <tr>
+            <td><B>id</B></td>
+            <td><input type=textbox name="orderbyid" size="25" value=" "></td>
+              <input type="hidden" id=${userId} name="userId" value=${userId}>
+        </tr>
+        <input type=submit value="удалить заказ">
+    </table>
+</form>
 <br>
 <br>
 <tr>Статусы сформированных заказов</tr>
@@ -43,7 +59,22 @@
 
 </form>
 
-<c:out value ="${orderclient}"/>
+<c:out value ="${orderclient1}"/>
+
+<form name="Form"
+      method="get"
+      action="http://localhost:8080/basketServletFinish">
+        <input type=submit value="статус заказов">
+<input type="hidden" id=${userId} name="userId" value=${userId}>
+
+</form>
+<c:out value ="${orderclientAll}"/>
+<form name="Form"
+      method="post"
+      action="http://localhost:8080/basketServletFinish">
+        <input type=submit value="полный список заказов">
+<input type="hidden" id=${userId} name="userId" value=${userId}>
+</form>
 
 
 </body>

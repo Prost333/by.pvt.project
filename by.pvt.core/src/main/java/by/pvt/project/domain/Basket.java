@@ -74,7 +74,7 @@ public class Basket implements Serializable {
         return "Basket{" +
                 "id=" + id +
                 ", userId=" + userId +
-                ", orderid=" + orderid +
+                ", orderCount=" + orderid +
                 ", price=" + price +
                 ", count=" + count +
                 '}';

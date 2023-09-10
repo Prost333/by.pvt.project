@@ -12,9 +12,7 @@ action="http://localhost:8080/adminS">
 <input type=submit value="List Product">
 </br>
 </form>
-<div>
-<c:out value ="${Goods}"/>
-</div>
+
 
 <br>
 <table>
@@ -51,7 +49,7 @@ action="http://localhost:8080/adminS">
 </table>
 
 <form name="Form"
-method="post"
+method="get"
 action="http://localhost:8080/completionBasket.jsp">
 <input type=submit value="Basket">
 </br>

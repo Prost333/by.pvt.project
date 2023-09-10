@@ -20,7 +20,6 @@ public class Authentication implements Filter {
             httpServletRequest.setAttribute("error", "error");
             httpServletRequest.getRequestDispatcher("/loginFailed.jsp").forward(httpServletRequest, servletResponse);
         } else {
-
             filterChain.doFilter(httpServletRequest, servletResponse);
         }
     }

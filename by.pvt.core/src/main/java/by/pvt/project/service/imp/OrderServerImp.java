@@ -69,12 +69,7 @@ public class OrderServerImp  implements OrderService {
     }
 
     public List<Order> orderListbyStatus(int userid, Status status) {
-        List<Order> users =orderRepositoryBD.getAllOrder();
-        List<Order> orderList = users.stream().filter(order -> order.getUserId() == userid).
-                filter(order -> order.getStatus().equals(status)).collect(Collectors.toList());
-            if (orderList.isEmpty()) {
-                orderList=new ArrayList<>();
-            }
+        List<Order> orderList =orderRepositoryBD.findOrderByIdAndStatus(userid,status);
         return orderList;
     }
 
@@ -87,34 +82,26 @@ public class OrderServerImp  implements OrderService {
         }
         return orderList;
     }
-
     @Override
     public Order findOrderbyid(int id) {
        return orderRepositoryBD.findOrderById(id);
     }
 
-
-    public void newStatus(int userid, Status oldstatus, Status newstatus) {
-        List<Order>orderList=orderRepositoryBD.getAllOrder().stream().filter(order -> order.getUserId()==userid).
-                filter(order1 ->order1.getStatus().equals(oldstatus)).collect(Collectors.toList());
-
-        for (Order order : orderList) {
-                Order order1 = new Order(order.getId(), order.getUserId(), order.getGoodid(), order.getCount(), order.getCost(), newstatus);
-                try {
-                    orderRepositoryBD.deleteOrder(order);
-                }catch (Throwable e){
-//                    throw new RuntimeException(e.getMessage());
-                }
-                orderRepositoryBD.addREOrder(order1);
-
-        }
-    }
     public void changeStatus(int userId, String oldStatus, String newStatus){
-            List<Order>orderList=orderRepositoryBD.getAllOrder().stream().filter(order -> order.getUserId()==userId).
-                    filter(order -> order.getStatus().name().equals(oldStatus)).collect(Collectors.toList());
-        for (Order order:orderList) {
-            orderRepositoryBD.changeOrder(userId,oldStatus,newStatus);
-        }
+        orderRepositoryBD.changeOrder(userId,oldStatus,newStatus);
+    }
+
+    @Override
+    public int orderCount(int userId) {
+        return orderRepositoryBD.orderCount(userId);
+    }
+
+    @Override
+    public void deleteOrder(int userid,int orderid) {
+      Order order=  orderRepositoryBD.findOrderById(orderid);
+      if (order.getUserId()==userid){
+        orderRepositoryBD.deleteOrder(order);
+      }
     }
 
 

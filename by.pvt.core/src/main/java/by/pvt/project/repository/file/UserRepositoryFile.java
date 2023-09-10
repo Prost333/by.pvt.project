@@ -73,4 +73,14 @@ public class UserRepositoryFile extends FileWorker implements UserRepository {
     public User findUserById(int id) {
         return null;
     }
+
+    @Override
+    public User findUserByLogin(String login) {
+        return null;
+    }
+
+    @Override
+    public User findUserByLoginandPassword(String login, String password) {
+        return null;
+    }
 }

@@ -59,8 +59,9 @@ public class UserRepositoryBD implements UserRepository {
     @Override
     public List<User> getAllUser() {
         List<User> personList = new ArrayList<>();
+        Connection connection = postgresqlConnector.getConnector();
         try {
-            Connection connection = postgresqlConnector.getConnector();
+
             Statement statement = connection.createStatement();
             statement.executeQuery("select * from project.user");
             ResultSet resultSet = statement.getResultSet();
@@ -74,23 +75,29 @@ public class UserRepositoryBD implements UserRepository {
                 if (role.equals("Admin")) {
                     User person = new User(Integer.valueOf(id), name, surname, password, login, Role.ADMIN);
                     personList.add(person);
-                }else {
+                } else {
                     User person = new User(Integer.valueOf(id), name, surname, password, login, Role.CLIENT);
                     personList.add(person);
                 }
 
             }
-
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e.getMessage());
+            }
+
         }
         return personList;
     }
 
     @Override
     public User findUserById(int id) {
+        Connection connection = postgresqlConnector.getConnector();
         try {
-            Connection connection = postgresqlConnector.getConnector();
             PreparedStatement preparedStatement = connection.prepareStatement("select * from project.user s where s.id=?");
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -102,11 +109,87 @@ public class UserRepositoryBD implements UserRepository {
             String surname = resultSet.getString(3);
             String password = resultSet.getString(4);
             String login = resultSet.getString(5);
-            String role = resultSet.getString(5);
-            User person = new User(Integer.valueOf(id), name, surname, password, login, Role.CLIENT);
-            return person;
+            String role = resultSet.getString(6);
+            if (id == 1) {
+                User person = new User(Integer.valueOf(id), name, surname, password, login, Role.ADMIN);
+                return person;
+            } else {
+                User person = new User(Integer.valueOf(id), name, surname, password, login, Role.CLIENT);
+                return person;
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e.getMessage());
+            }
+        }
+    }
+
+    public User findUserByLogin(String login) {
+        Connection connection = postgresqlConnector.getConnector();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from project.user s where s.login=?");
+            preparedStatement.setString(1, login);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet == null) {
+                return new User();
+            }
+            resultSet.next();
+            String id = resultSet.getString(1);
+            String name = resultSet.getString(2);
+            String surname = resultSet.getString(3);
+            String password = resultSet.getString(4);
+            String role = resultSet.getString(6);
+            if (login.equals("admin")) {
+                User person = new User(Integer.valueOf(id), name, surname, password, login, Role.ADMIN);
+                return person;
+            } else {
+                User person = new User(Integer.valueOf(id), name, surname, password, login, Role.CLIENT);
+                return person;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e.getMessage());
+            }
+        }
+    }
+    public User findUserByLoginandPassword(String login, String password) {
+        Connection connection = postgresqlConnector.getConnector();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select*from project.user where login=? and password=?");
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet == null) {
+                return new User();
+            }
+            resultSet.next();
+            String id=resultSet.getString(1);
+            String name = resultSet.getString(2);
+            String surname = resultSet.getString(3);
+            String role = resultSet.getString(6);
+            if (id.equals("1")) {
+                User person = new User(Integer.valueOf(id), name, surname, password, login, Role.ADMIN);
+                return person;
+            } else {
+                User person = new User(Integer.valueOf(id), name, surname, password, login, Role.CLIENT);
+                return person;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e.getMessage());
+            }
         }
     }
 }

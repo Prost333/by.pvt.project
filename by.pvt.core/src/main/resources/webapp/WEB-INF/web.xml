@@ -38,13 +38,13 @@
         <url-pattern>/admin</url-pattern>
     </servlet-mapping>
     <servlet>
-    <servlet-name>AdminServlet</servlet-name>
-    <servlet-class>by.pvt.project.servlets.AdminServlet</servlet-class>
-</servlet>
-<servlet-mapping>
-<servlet-name>AdminServlet</servlet-name>
-<url-pattern>/adminS</url-pattern>
-</servlet-mapping>
+        <servlet-name>AdminServlet</servlet-name>
+        <servlet-class>by.pvt.project.servlets.AdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminServlet</servlet-name>
+        <url-pattern>/adminS</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>basket</servlet-name>
         <jsp-file>/basket.jsp</jsp-file>
@@ -52,6 +52,14 @@
     <servlet-mapping>
         <servlet-name>basket</servlet-name>
         <url-pattern>/basket</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AdminServletF</servlet-name>
+        <servlet-class>by.pvt.project.servlets.AdminServletFunction</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminServletF</servlet-name>
+        <url-pattern>/AdminServletF</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>BasketServlet</servlet-name>
@@ -62,6 +70,15 @@
         <url-pattern>/basketServlet</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>DeleteOrder</servlet-name>
+        <servlet-class>by.pvt.project.servlets.DeleteOrder</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteOrder</servlet-name>
+        <url-pattern>/DeleteOrder</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>completionBasket</servlet-name>
         <jsp-file>/completionBasket.jsp</jsp-file>
     </servlet>
@@ -69,19 +86,39 @@
         <servlet-name>completionBasket</servlet-name>
         <url-pattern>/completionBasket</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>BasketServletFinish</servlet-name>
+        <servlet-class>by.pvt.project.servlets.BasketServletFinish</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BasketServletFinish</servlet-name>
+        <url-pattern>/basketServletFinish</url-pattern>
+    </servlet-mapping>
 
 
-<filter>
-<filter-name>authenfication</filter-name>
-<filter-class>by.pvt.project.filter.Authentication</filter-class>
-</filter>
-<filter-mapping>
-<filter-name>authenfication</filter-name>
-<url-pattern>/goodRegistration.jsp</url-pattern>
-</filter-mapping>
-<filter-mapping>
-<filter-name>authenfication</filter-name>
-<url-pattern>/AdminServlet.jsp</url-pattern>
-</filter-mapping>
 
-        </web-app>
+    <filter>
+        <filter-name>authenfication</filter-name>
+        <filter-class>by.pvt.project.filter.Authentication</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>authenfication</filter-name>
+        <url-pattern>/goodRegistration.jsp/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>authenfication</filter-name>
+        <url-pattern>/AdminServlet/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>authenfication</filter-name>
+        <url-pattern>/goodreg/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>authenfication</filter-name>
+        <url-pattern>/AdminServletF/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>authenfication</filter-name>
+        <url-pattern>/goodMenu/*</url-pattern>
+    </filter-mapping>
+</web-app>

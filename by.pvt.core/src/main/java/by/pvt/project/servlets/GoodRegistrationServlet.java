@@ -46,8 +46,6 @@ public class GoodRegistrationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         GoodService goodService = ApplicationContext.getInstance().getGoodService();
-        Enumeration<String> param = req.getParameterNames();
-        PrintWriter printWriter = resp.getWriter();
         UserService userService = ApplicationContext.getInstance().getUserService();
         req.setAttribute("allUsers",userService.userlist());
         req.getRequestDispatcher("/goodRegistration.jsp").forward(req,resp);
@@ -75,13 +73,6 @@ public class GoodRegistrationServlet extends HttpServlet {
             }
         }
 
-
-        while (param.hasMoreElements()) {
-            String pname = param.nextElement();
-            printWriter.print("param name: " + pname);
-            printWriter.println(" value: " + req.getParameter(pname));
-        }
-        printWriter.close();
 
 
 

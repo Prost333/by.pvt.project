@@ -15,56 +15,54 @@ public class GoodServiceImp implements GoodService {
 
     public GoodServiceImp(GoodMapping goodMapping, GoodRepositoryBD goodRepositoryBD) {
         this.goodMapping = goodMapping;
-        this.goodRepositoryBD= goodRepositoryBD;
+        this.goodRepositoryBD = goodRepositoryBD;
     }
 
     @Override
     public void addGood(Good good) {
-         goodRepositoryBD.addgood(good);
+        goodRepositoryBD.addgood(good);
     }
-
 
 
     @Override
     public Good changeType(Good good, String type) {
-        good=findIDGood(good.getId());
+        good = findIDGood(good.getId());
         good.setType(type);
         return good;
     }
 
     @Override
     public Good changePrice(Good good, double price) {
-        good=findIDGood(good.getId());
+        good = findIDGood(good.getId());
         good.setPrice(price);
         return good;
     }
 
     @Override
     public Good changeName(Good good, String name) {
-        good=findIDGood(good.getId());
+        good = findIDGood(good.getId());
         good.setName(name);
         return good;
     }
 
     @Override
     public Good changeCode(Good good, int code) {
-        good=findIDGood(good.getId());
+        good = findIDGood(good.getId());
         good.setCode(code);
         return good;
     }
 
     @Override
-    public Good updateGood(int id,String name, String type, double price) {
-        Good good=findIDGood(id);
-        Good newGood=new Good(name,id,type,price,good.getCode());
-        goodRepositoryBD.deleteGood(good);
-        goodRepositoryBD.addgood(newGood);
-        return newGood;
+    public void updateGood(int id, String name, String type, double price) {
+        goodRepositoryBD.changeGoodName(id,name);
+        goodRepositoryBD.changeGoodType(id,type);
+        goodRepositoryBD.changeGoodprice(id,price);
+
     }
 
     @Override
     public Good createGood(String name, int id, String type, double price, int code) {
-        return new Good(name,id,type,price,code);
+        return new Good(name, id, type, price, code);
     }
 
     @Override
@@ -90,9 +88,10 @@ public class GoodServiceImp implements GoodService {
 
         return good1.get();
     }
+
     @Override
     public void deliteGood(int id) {
-        Good good=findIDGood(id);
+        Good good = findIDGood(id);
         goodRepositoryBD.deleteGood(good);
 
     }

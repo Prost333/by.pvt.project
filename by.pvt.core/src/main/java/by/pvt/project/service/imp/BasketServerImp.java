@@ -16,8 +16,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class BasketServerImp implements BasketService {
-    private BasketRepositoryBD basketRepositoryBD;
-    private BasketMapping basketMapping;
+    private final BasketRepositoryBD basketRepositoryBD;
+    private final BasketMapping basketMapping;
 
 
     public BasketServerImp(BasketRepositoryBD basketRepositoryBD, BasketMapping basketMapping) {
@@ -26,12 +26,10 @@ public class BasketServerImp implements BasketService {
     }
 
 
-
     @Override
-    public Basket creatBasket(int id, int userId,int orderid, int count, double price) {
-        Basket basket1 = new Basket(id, userId,price, orderid, count);
+    public Basket creatBasket(int id, int userId, int orderid, int count, double price) {
+        Basket basket1 = new Basket(id, userId, price, orderid, count);
         basketRepositoryBD.addBasket(basket1);
-
         return basket1;
     }
 
@@ -44,11 +42,15 @@ public class BasketServerImp implements BasketService {
 
     @Override
     public Basket findBasketById(int id) {
-       return  basketRepositoryBD.findBasketById(id);
+        return basketRepositoryBD.findBasketById(id);
 
     }
+
     public void removeBasket(Basket basket) {
         basketRepositoryBD.deleteBasket(basket);
+    }
+    public Basket findBasketByuserIdandSum ( int id){
+        return  basketRepositoryBD.findBasketByuserIdandSum(id);
     }
 
 }

@@ -11,7 +11,7 @@ public interface GoodService {
     Good changePrice(Good good, double price);
     Good changeName (Good good, String name);
     Good changeCode (Good good, int code);
-    Good updateGood( int id,String name, String type,double price);
+    void updateGood( int id,String name, String type,double price);
     Good createGood(String name, int id,String type,double price,int code);
     List<Good>goodList();
     int SizeGood();
