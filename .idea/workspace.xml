@@ -4,73 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5730eb22-b9ef-4dfb-a8b6-77e9aa6e31fa" name="Changes" comment="дз11">
-      <change afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/servlets/AdminServletFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/servlets/BasketServletFinish.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/servlets/DeleteOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/domain/Basket.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/domain/Basket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/filter/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/filter/Authentication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/BD/BasketRepositoryBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/BD/BasketRepositoryBD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/BD/GoodRepositoryBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/BD/GoodRepositoryBD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/BD/OrderRepositoryBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/BD/OrderRepositoryBD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/BD/UserRepositoryBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/BD/UserRepositoryBD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/file/GoodRepositoryFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/file/GoodRepositoryFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/file/UserRepositoryFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/file/UserRepositoryFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/serviceRep/BasketRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/serviceRep/BasketRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/serviceRep/GoodRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/serviceRep/GoodRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/serviceRep/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/serviceRep/OrderRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/serviceRep/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/repository/serviceRep/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/service/BasketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/service/BasketService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/service/GoodService.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/service/GoodService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/service/imp/BasketServerImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/service/imp/BasketServerImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/service/imp/GoodServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/service/imp/GoodServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/service/imp/OrderServerImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/service/imp/OrderServerImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/service/imp/UserServerImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/service/imp/UserServerImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/servlets/AdminServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/servlets/AdminServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/servlets/BasketServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/servlets/BasketServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/servlets/GoodRegistrationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/servlets/GoodRegistrationServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/servlets/UserRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/java/by/pvt/project/servlets/UserRegistration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/resources/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/resources/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/resources/webapp/completionBasket.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/resources/webapp/completionBasket.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/resources/webapp/goodMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/resources/webapp/goodMenu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/resources/webapp/goodRegistration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/resources/webapp/goodRegistration.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/src/main/resources/webapp/loginFailed.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/src/main/resources/webapp/loginFailed.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/domain/Basket.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/domain/Basket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/filter/Authentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/filter/Authentication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/mapping/GoodMapping.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/mapping/GoodMapping.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/mapping/UserMapping.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/mapping/UserMapping.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/BD/BasketRepositoryBD.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/BD/BasketRepositoryBD.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/BD/GoodRepositoryBD.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/BD/GoodRepositoryBD.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/BD/OrderRepositoryBD.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/BD/OrderRepositoryBD.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/BD/UserRepositoryBD.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/BD/UserRepositoryBD.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/file/GoodRepositoryFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/file/GoodRepositoryFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/file/UserRepositoryFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/file/UserRepositoryFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/serviceRep/BasketRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/serviceRep/BasketRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/serviceRep/GoodRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/serviceRep/GoodRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/serviceRep/OrderRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/serviceRep/OrderRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/serviceRep/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/repository/serviceRep/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/service/GoodService.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/service/GoodService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/service/OrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/service/OrderService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/service/imp/BasketServerImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/service/imp/BasketServerImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/service/imp/GoodServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/service/imp/GoodServiceImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/service/imp/OrderServerImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/service/imp/OrderServerImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/service/imp/UserServerImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/service/imp/UserServerImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/servlets/AdminServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/servlets/AdminServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/servlets/BasketServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/servlets/BasketServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/servlets/GoodRegistrationServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/servlets/GoodRegistrationServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/servlets/UserRegistration.class" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/by/pvt/project/servlets/UserRegistration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/webapp/completionBasket.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/webapp/completionBasket.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/webapp/goodMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/webapp/goodMenu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/webapp/goodRegistration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/webapp/goodRegistration.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/classes/webapp/loginFailed.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/classes/webapp/loginFailed.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/by.pvt.core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/by.pvt.core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-    </list>
+    <list default="true" id="5730eb22-b9ef-4dfb-a8b6-77e9aa6e31fa" name="Changes" comment="финальный проект1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/hw11.1" />
+        <entry key="$PROJECT_DIR$" value="feature/hw11.2.final" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -232,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693739025933</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="финальный проект">
+      <created>1694338476842</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1694338476842</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -249,7 +190,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="на проверку" />
     <MESSAGE value="дз11" />
-    <option name="LAST_COMMIT_MESSAGE" value="дз11" />
+    <MESSAGE value="финальный проект" />
+    <option name="LAST_COMMIT_MESSAGE" value="финальный проект" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
